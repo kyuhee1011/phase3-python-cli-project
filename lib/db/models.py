@@ -18,8 +18,8 @@ room =Table(
     Column ("room_id", Integer, primary_key=True),
     Column ("room name",String()),
     Column ("room type",String()),
-    Column ("character_id", ForeignKey("character.id")),
-    Column ("enemy_id", ForeignKey("enemy.id"))
+    Column ("character_id", ForeignKey("characters.id")),
+    Column ("enemy_id", ForeignKey("enemies.id"))
 )
 
 class Player(Base):
