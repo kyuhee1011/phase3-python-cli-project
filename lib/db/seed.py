@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Character
+from models import Character, Player
 # import ipdb; ipdb.set_trace()
 
 # from faker import Faker
@@ -25,11 +25,19 @@ characters= [
                health_point= "60", combat_word= "Quick Shot",attack_point = "15"),
 
 ]
-
-session.bulk_save_objects (characters)
+session.add (characters)
 session.commit ()
 
 characters =session.query (Character).all()
+
+players = [
+    Player (name="Kyuhee Lee", number_of_win= "1", number_of_lose="0")
+]
+
+session.add (players)
+session.commit ()
+
+characters =session.query (Player).all()
 
 
 #create a random enemies name
