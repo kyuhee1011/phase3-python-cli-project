@@ -7,9 +7,9 @@ Base = declarative_base()
 player_character=Table (
     "player_character",
     Base.metadata,
-    Column ("player_character_id", Integer, primary_key=True),
-    Column ("character_id", ForeignKey("character.id")),
-    Column ("player_id", ForeignKey("player.id"))
+    Column ("id", Integer, primary_key=True),
+    Column ("character_id", ForeignKey("characters.id")),
+    Column ("player_id", ForeignKey("players.id"))
 )
 
 room =Table(
@@ -78,19 +78,3 @@ class Enemy (Base):
             
 
         
-# class Room (Base): 
-#     __tablename__='rooms'
-#     id = Column (Integer(), primary_key=True)
-#     name = Column(String())
-#     room_type= Column(String())
-#     char_id =Column(Integer(), ForeignKey("enemies.id"))
-#     enemy_id=Column(Integer(), ForeignKey ("characters.id"))
-  
-
-#     def __repr__(self):
-#         return f"Room {self.id}: " \
-#             + f"{self.name}, " \
-#             + f"type {self.room_type}"\
-#             + f"Character Id {self.char_id}"\
-#             + f"Enemy Id {self.enemy_id}"
-
