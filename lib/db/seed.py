@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Character, Player
+from models import Character, Player, Enemy
 # import ipdb; ipdb.set_trace()
 
 # from faker import Faker
@@ -22,7 +22,7 @@ characters= [
     Character (name="Harry Dime", class_job= "mage",
                health_point= "50", combat_word= "Ice Storm", attack_point = "20"),
     Character (name="Nick Super", class_job= "archer",
-               health_point= "60", combat_word= "Quick Shot",attack_point = "15"),
+               health_point= "60", combat_word= "Quick Shot", attack_point = "15"),
 
 ]
 session.add (characters)
@@ -38,6 +38,15 @@ session.add (players)
 session.commit ()
 
 characters =session.query (Player).all()
+
+enemies = [
+    Enemy (name="Xamir", type="Venom Man", health_point="60",attack_point = "10"),
+    Enemy (name="Goldnails", type="Goblin", health_point="30",attack_point = "7"),
+    Enemy (name="Elrel", type="Demon", health_point="40",attack_point = "15"),
+    Enemy (name="Kumonga", type="Giant Spider", health_point="50",attack_point = "12"),
+    Enemy (name="Toothless", type="Dragon", health_point="70",attack_point = "15")
+]
+
 
 
 #create a random enemies name
