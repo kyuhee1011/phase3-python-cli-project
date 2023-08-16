@@ -15,9 +15,9 @@ player_character=Table (
 room =Table(
     "room_character_enemy",
     Base.metadata,
-    Column ("room_id", Integer, primary_key=True),
-    Column ("room name",String()),
-    Column ("room type",String()),
+    Column ("id", Integer, primary_key=True),
+    Column ("room_name",String()),
+    Column ("room_type",String()),
     Column ("character_id", ForeignKey("characters.id")),
     Column ("enemy_id", ForeignKey("enemies.id"))
 )

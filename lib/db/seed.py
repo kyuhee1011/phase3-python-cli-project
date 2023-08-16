@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Character, Player, Enemy
+from models import Character, Player, Enemy, room
 # import ipdb; ipdb.set_trace()
 
 # from faker import Faker
@@ -13,6 +13,10 @@ if __name__ == '__main__':
     session = Session()
 
     session.query(Character).delete()
+    session.query(Player).delete()
+    session.query(Enemy).delete()
+    
+
 
 characters= [
     Character (name="James Park", class_job= "knight",health_point= "70", 
@@ -37,7 +41,7 @@ players = [
 session.add (players)
 session.commit ()
 
-characters =session.query (Player).all()
+players =session.query (Player).all()
 
 enemies = [
     Enemy (name="Xamir", type="Venom Man", health_point="60",attack_point = "10"),
@@ -46,6 +50,24 @@ enemies = [
     Enemy (name="Kumonga", type="Giant Spider", health_point="50",attack_point = "12"),
     Enemy (name="Toothless", type="Dragon", health_point="70",attack_point = "15")
 ]
+
+session.add (enemies)
+session.commit ()
+
+enemies =session.query (Enemy).all()
+
+room_character_enemy=[
+    room (room_name ="Creepy Dark Desert", room_type="Forest "),
+    room (room_name ="The Glory Plaza", room_type="Plaza"),
+    room (room_name ="Daily Tasty Food", room_type="Kitchen"),
+    room (room_name ="Main Public Library", room_type="Library"),
+    room (room_name ="Midstable Hallway", room_type="Corridor")
+]
+
+session.add (room_character_enemy)
+session.commit ()
+
+enemies =session.query (room).all()
 
 
 
